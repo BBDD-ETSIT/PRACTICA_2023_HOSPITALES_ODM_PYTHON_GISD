@@ -89,6 +89,7 @@
                   <div class="card-body">
                     <h4 class="card-title"><b>{{ hospital.name }}</b></h4>
                     <h6 class="card-subtitle mb-2 text-muted">{{ hospital.city }}</h6>
+                    <button class="btn btn-primary" onclick="location.href='/hospitals/{{ hospital.id }}/show'"><b>Ver Información</b></button>
                     <button class="btn btn-primary" onclick="location.href='/hospitals/{{ hospital.id }}/patients'"><b>Ver pacientes</b></button>
                   </div>
                 </div>

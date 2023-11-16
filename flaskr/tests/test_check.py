@@ -68,13 +68,13 @@ def test_list_hospital_patients():
     assert list_patients[0].id == "923ec756-87b7-4743-808b-795a04b6dd21"
     assert list_patients[1].id == "3a268172-6c5c-4d9b-8964-8b9a1e531af5"
     assert list_patients[2].id == "508fb53c-c212-453f-ab17-cf56049f5a2c"
-    global score; score += 1 # Increase score
+    global score; score += 0.5 # Increase score
 
-# def test_show_hospital():
-#     hospital_id = "9f8a5c90-cf1a-4ca3-9dea-c6a94174ae69"
-#     result=controller.show_hospital(hospital_id)
-#     assert result is not None
-#     global score; score += 2 # Increase score
+def test_show_hospital():
+    hospital_id = "9f8a5c90-cf1a-4ca3-9dea-c6a94174ae69"
+    result=controller.show_hospital(hospital_id)
+    assert result is not None
+    global score; score += 0.5 # Increase score
 
 def test_read_patient():
     patient_id="3a268172-6c5c-4d9b-8964-8b9a1e531af5"
@@ -83,7 +83,7 @@ def test_read_patient():
     assert patient.name == "Juan"
     assert patient.surname == "Rodriguez"
     assert patient.dni == "123123"
-    global score; score += 1 # Increase score
+    global score; score += 0.5 # Increase score
 
 def test_create_patient():
     hospital_id = "9f8a5c90-cf1a-4ca3-9dea-c6a94174ae69"
@@ -97,7 +97,7 @@ def test_create_patient():
     assert created_patient.name == "John"
     assert created_patient.surname == "Doe"
     assert created_patient.dni == "987654"
-    global score; score += 1.5 # Increase score
+    global score; score += 1 # Increase score
 
 
 def test_update_patient():
@@ -113,7 +113,7 @@ def test_update_patient():
     assert updated_patient.name == patient_data["name"]
     assert updated_patient.surname == patient_data["surname"]
     assert updated_patient.dni == patient_data["dni"]
-    global score; score += 1.5 # Increase score
+    global score; score += 1 # Increase score
 
 def test_delete_patient():
     patient_id = "3a268172-6c5c-4d9b-8964-8b9a1e531af5"
@@ -144,7 +144,7 @@ def test_show_patient_doctors():
     assert len(doctors) == 2
     assert doctors[0].name == "Dr Pedro"
     assert doctors[1].name == "Dra Patricia"
-    global score; score += 1 # Increase score
+    global score; score += 0.5 # Increase score
 
 def test_show_score(capsys):
     with capsys.disabled():

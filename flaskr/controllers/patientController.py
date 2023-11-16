@@ -60,3 +60,7 @@ def show_patient_doctors(patient_id):
     #Complete aquí el contenido de la función
     return doctors
 
+# Mostrar la información registrada para un hospital    
+def show_hospital(hospital_id):
+    #Complete aquí el contenido de la función
+    return iri, hospital_info
