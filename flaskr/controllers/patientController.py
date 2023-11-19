@@ -63,4 +63,16 @@ def show_patient_doctors(patient_id):
 # Mostrar la información registrada para un hospital    
 def show_hospital(hospital_id):
     #Complete aquí el contenido de la función
-    return iri, hospital_info
+    hospital = Hospital.objects.get(id=hospital_id)
+    query = f'''
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT DISTINCT ?nombre # ...
+    # ¡ATENCIÓN!
+    # Hay que utilizar doble corchete en estas consultas, porque es una f-string
+            WHERE {{
+                <{hospital.iri}> rdfs:label ?nombre .
+            }}
+
+    '''
+    hospital_info = sparql(query)
+    return hospital_info, hospital.iri

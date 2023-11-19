@@ -260,9 +260,10 @@ A diferencia del resto de apartados, en este caso la información se conseguirá
 Para ello, primero deberá recuperar el hospital (usando el ODM), para de esa forma acceder a su IRI.
 Mediante la función `sparql` (importada de `models`), debe realizar una consulta SPARQL a DBpedia, conteniendo al menos:
 
-- La descripción del hospital en español (en una variable `?descripcion`)
+- La página web del hospital (en la variable `?homepage`)
+- La descripción del hospital en español (en la variable `?descripcion`)
 - El nombre del hospital en español (variable `?nombre`)
-- Número de camas en el hospital (en la variable `?camas`_), debe tener un valor en blanco si no se encuentra
+- Número de camas en el hospital (en la variable `?camas`), debe tener un valor en blanco si no se encuentra
 
 Adicionalmente, se puede añadir más información, tal como el código postal, la región de referencia, o el número de habitantes de la ciudad en la que se encuentra el hospital.
 
@@ -295,7 +296,7 @@ Para ello, debemos seguir los siguientes pasos:
 
 El fichero resultante (`hospitales.ttl`) se subirá a la tarea de Moodle.
 
-Opcionalmente, se puede (y se debería) comprobar que la información descargada es correcta siguiendo estos pasos:
+Finalmente, se comprobará que la información descargada es correcta siguiendo estos pasos:
 
 * Lanzar una instancia local de Fuseki, usando la versión standalone o la imagen de docker (ver transparencias).
 * Crear un dataset nuevo en la instancia local (p.e., `hospitales`).
@@ -304,7 +305,7 @@ Opcionalmente, se puede (y se debería) comprobar que la información descargada
 * Modificar la llamada a `sparql` dentro de `run.py` para que use el endpoint de la instancia local (p.e. `sparql(query=query, endpoint='http://localhost:3000/hospitales/sparql')`.
 * Comprobar que las consultas siguen funcionando correctamente (es decir, la página se muestra igual que apuntando a DBpedia directamente)
 
-Si se ha realizado este paso, se añadirá el fichero CAPTURA3 a la entrega de moodle.
+Una vez realizado estos pasos, se  añadirá el fichero CAPTURA3 a la entrega de moodle.
 
 ## 7. Instrucciones para la Entrega y Evaluación.
 
@@ -348,13 +349,12 @@ PASSED                                 [100%]
 
 ```
 
-El alumno deberá subir a Moodle las **capturas** solicitadas y los ficheros *patientController.py*, *seeders.json* y *models.py* con las modificaciones realizadas, además del fichero `hospitales.ttl` (en total 5 ficheros incluyendo las capturas). 
-Para la tarea opcional, se podrá subir adicionalmente un fichero con el nombre `hospitales.ttl`.
+El alumno deberá subir a Moodle las **capturas** solicitadas y los ficheros *patientController.py*, *seeders.json* y *models.py* con las modificaciones realizadas, además del fichero `hospitales.ttl` (en total 7 ficheros incluyendo las capturas). 
 
 **RÚBRICA**: Cada método que se pide resolver de la practica se puntuara de la siguiente manera:
 -  **0.5 puntos por añadir en el seeder el doctor con sus datos personales y conectar a la base de datos con su nombre.**
 -  **0.5 puntos por cada uno de las siguientes funciones realizadas:**  `list_hospitals`, `filterHospitalsByCity`, `list_hospital_patients`, `read`, `showPatientDoctors` y `delete`.
--  **1 puntos por cada uno de las siguientes funciones realizadas:**  , `create_patient` y `update_patient`
+-  **1 puntos por cada uno de las siguientes funciones realizadas:**  `create_patient` y `update_patient`
 -  **2 puntos por la función `assignDoctor` con la funcionalidad requerida en el punto 5.2**
 -  **1.5 puntos** por la función `show_hospital`.
 -  **1 punto** por capturar la información adecuada en el fichero `hospitales.ttl`.
