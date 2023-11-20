@@ -6,8 +6,8 @@ pymongo==4.3.3
 flask_mongoengine
 Flask-Seeder
 flask_debugtoolbar
-SPARQLWrapper==1.8.5
-rdflib==6.0.2
+SPARQLWrapper==2.0.0
+rdflib==7.0.0
 pytest
 pytest-mocha
 Werkzeug==2.2.2
