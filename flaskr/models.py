@@ -29,6 +29,7 @@ class Doctor(db.Document):
     surname = db.StringField(required=True)
     speciality = db.StringField(required=True)
 
+
 def sparql(query, endpoint='https://es.dbpedia.org/sparql'):
     FORMATS = ",".join(["application/sparql-results+json",
                     "text/javascript",
@@ -42,16 +43,13 @@ def sparql(query, endpoint='https://es.dbpedia.org/sparql'):
                          'accept': FORMATS},
                 method='POST')
 
-
     try:
         try:
             res = urlopen(r)
         except URLError: # If there is a problem with the certificate, try an insecure query
-    
             context = ssl.create_default_context()
             context.check_hostname = False
             context.verify_mode = ssl.CERT_NONE
-
             res = urlopen(r, context=context)
     except HTTPError as e:
         body = e.read().decode()

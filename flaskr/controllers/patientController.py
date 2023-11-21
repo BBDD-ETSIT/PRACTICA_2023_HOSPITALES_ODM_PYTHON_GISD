@@ -74,5 +74,5 @@ def show_hospital(hospital_id):
             }}
 
     '''
-    hospital_info = sparql(query)
+    hospital_info = sparql(query, endpoint='https://es.dbpedia.org/sparql')
     return hospital_info, hospital.iri
