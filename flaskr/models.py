@@ -1,5 +1,10 @@
+import ssl
+import json
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode
+from urllib.error import HTTPError, URLError
+
 from flask import url_for
-from SPARQLWrapper import SPARQLWrapper, JSON
 
 from db import db
 
@@ -25,11 +30,41 @@ class Doctor(db.Document):
     speciality = db.StringField(required=True)
 
 def sparql(query, endpoint='https://es.dbpedia.org/sparql'):
-    sparql = SPARQLWrapper(endpoint)
-    sparql.setReturnFormat(JSON)
+    FORMATS = ",".join(["application/sparql-results+json",
+                    "text/javascript",
+                    "application/json"])
 
-    sparql.setQuery(query)
-    results = sparql.query().convert()
+    data = {'query': query}
+
+    r = Request(endpoint,
+                data=urlencode(data).encode('utf-8'),
+                headers={'content-type': 'application/x-www-form-urlencoded',
+                         'accept': FORMATS},
+                method='POST')
+
+
+    try:
+        try:
+            res = urlopen(r)
+        except URLError: # If there is a problem with the certificate, try an insecure query
+    
+            context = ssl.create_default_context()
+            context.check_hostname = False
+            context.verify_mode = ssl.CERT_NONE
+
+            res = urlopen(r, context=context)
+    except HTTPError as e:
+        body = e.read().decode()
+        raise Exception(f"There is probably something wrong with the query: \n{body}")
+
+    data = res.read().decode('utf-8')
+    if res.getcode() == 200:
+        try:
+            results = json.loads(data)
+        except Exception as e:
+            raise Exception(f"Could not read JSON: {e}")
+    else:
+        raise Exception('Error getting results: {}'.format(data))
 
     print(results)
 
