@@ -151,6 +151,7 @@ def test_show_hospital():
     hospital_id = "9f8a5c90-cf1a-4ca3-9dea-c6a94174ae69"
     hospital_info, hospital_iri = controller.show_hospital(hospital_id)
     assert hospital_iri
-    assert 'nombre' in hospital_info
-    assert 'homepage' in hospital_info
-    assert 'camas' in hospital_info
+    assert 'nombre' in hospital_info[0]
+    assert 'homepage' in hospital_info[0]
+    assert 'camas' in hospital_info[0]
+
