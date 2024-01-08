@@ -51,12 +51,12 @@ Abra un terminal en su ordenador y siga los siguientes pasos.
 
 Clone el repositoro de GitHub
 ```
-git clone https://github.com/BBDD-ETSIT/MASTER_PRACTICA_ODM_PYTHON.git
+git clone https://github.com/BBDD-ETSIT/PRACTICA_ODM_PYTHON_GISD.git
 ```
 
-Navegue a través de un terminal a la carpeta MASTER_PRACTICA_ODM_PYTHON.
+Navegue a través de un terminal a la carpeta PRACTICA_ODM_PYTHON_GISD.
 ```
-> cd MASTER_PRACTICA_ODM_PYTHON
+> cd PRACTICA_ODM_PYTHON_GISD
 ```
 
 Una vez dentro de la carpeta, se instalan las dependencias. Para ello debe crear un virtual environment de la siguiente manera:
