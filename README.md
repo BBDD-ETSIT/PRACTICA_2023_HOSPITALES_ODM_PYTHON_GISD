@@ -86,28 +86,14 @@ Instalamos las dependencias con pip:
 > pip3 install -r flaskr/requirements.txt 
 ```
 
-Indicamos a Flask el fichero con el que arrancar el servidor:
+Podemos arrancar el servidor con el siguiente comando. Hasta que no realize el primer ejercicio sobre la configuración de la URI, el servidor no arrancara(Debemos tener arrancado MongoDB):
 
 ```
-[LINUX/MAC] >  export FLASK_APP=flaskr/run.py
-[WINDOWS] > $env:FLASK_APP = "flaskr/run.py"
-```
-Debemos tener arrancado MongoDB. Dependiendo de cómo lo hayamos instalado arrancará solo al iniciar la máquina o tendremos que ir a ejecutar el programa "mongod" a la carpeta bin donde hayamos realizado la instalación.
-
-Podemos arrancar el servidor con el siguiente comando. Hasta que no realize el primer ejercicio sobre la configuración de la URI, el servidor no arrancara.
-
-```
-$ flask run
+flask --app ./flaskr/run.py  run --debug
 ```
 
 
 Abra un navegador y vaya a la url "http://localhost:5000" para ver la aplicación de gestión de pacientes.
-
-Si necesita arrancar la aplicación en un puerto diferente al predeterminado puede usar el sigiuente comando (reemplazando el 5002 por el puerto correspondiente):
-
-```
-flask run --port=5002
-```
 
 **NOTA: Cada vez que se quiera realizar una prueba del código desarrollado, debemos parar y arrancar de nuevo la practica. Para ello, desde el terminal pulse ctrl+c para parar y arranque de nuevo con flask run**
 

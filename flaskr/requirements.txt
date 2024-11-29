@@ -1,4 +1,4 @@
-Flask==2.2.2
+Flask==2.2.5
 Flask-WTF==1.0.1
 Jinja2==3.1.2
 WTForms==3.0.1
@@ -8,4 +8,4 @@ Flask-Seeder
 flask_debugtoolbar
 pytest
 pytest-mocha
-Werkzeug==2.2.2
+Werkzeug==2.3.8
